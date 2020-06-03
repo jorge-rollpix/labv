@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/utn_phones
+    username: jorge
+    password: 1234
+    jpa:
+      show-sql: true
