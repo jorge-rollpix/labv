@@ -22,31 +22,31 @@ public class PhoneLineController {
     }
 
     @GetMapping("/")
-    public List<PhoneLine> getPhoneLines(){
+    public List<PhoneLine> getPhoneLines() {
         return phoneLineService.getAllPhoneLines();
     }
 
 
     @PostMapping("/")
-    public void addPhoneLine(@RequestBody PhoneLine newPhoneLine){
+    public void addPhoneLine(@RequestBody PhoneLine newPhoneLine) {
         phoneLineService.addPhoneLine(newPhoneLine);
     }
 
 
     //PARCIAL BY PREFIX PHONE LINE W/O LOCALITIES
     @GetMapping("/byPrefix/{prefix}")
-    public ResponseEntity<List<PhoneLine>> getAllPhoneLinesByPrefix(@PathVariable Integer prefix){
+    public ResponseEntity<List<PhoneLine>> getAllPhoneLinesByPrefix(@PathVariable Integer prefix) {
+
         ResponseEntity<List<PhoneLine>> responseEntity;
+
         List<PhoneLine> phoneLines = phoneLineService.getAllPhoneLinesByPrefix(prefix);
 
-        if(phoneLines.size() > 0){
+        if (!phoneLines.isEmpty()) {
             responseEntity = ResponseEntity.ok(phoneLines);
-        }else{
+        } else {
             responseEntity = ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
-
         return responseEntity;
     }
-
 
 }
